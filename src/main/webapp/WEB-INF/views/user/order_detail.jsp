@@ -1,0 +1,77 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+
+
+
+<!-- Shopping Cart Section Begin -->
+
+	<div class="container text-center p-5"  style="margin-top: 30px" >
+		<div class="row">
+			<div class=" p-5">
+				<div class="alert alert-success col row mx-1" role="alert">
+  					Order Successfully!
+				</div>
+				<div>
+						<h5><strong>Order ID:</strong> ${order.id }</h5>
+						<h5><strong>Name:</strong> ${order.account.fullname }</h5>
+						<h5><strong>Address:</strong> ${order.address }</h5>
+						<h5><strong>Email:</strong> ${order.account.email }</h5>
+						<h5><strong>Create Date:</strong> ${order.createDate }</h5>
+				</div>
+				<div style="margin-left: 2000px" class=" text-center">
+					<table class="table table-primary">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<!-- <th>Image</th> -->
+								<th class="p-name">Product Name</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:set var="i" value="0"/>
+							<c:forEach var="item" items="${items}">
+								<input type="hidden" name="id" value="${item.id}">
+								<tr>
+									<td>${i=i+1}</td>
+									<%-- <td class="cart-pic first-row">
+										<img src="/forUser/img/products/${item.product.image}" alt="" width=50%></td> --%>
+									<td class="cart-title first-row text-center">
+										<h5>${item.product.name }</h5>
+									</td>
+									<td class="p-price first-row text-center">$${item.price }</td>
+									<td class="p-price first-row text-center">${item.quantity }</td>
+									<td class="total-price first-row text-center">$${item.price*item.quantity}</td>
+									
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="cart-buttons">
+							<a href="shop" class="primary-btn continue-shop">Continue
+								shopping</a> 
+						</div>
+					</div>
+					<c:set var="total" value="${0}" />
+					<c:forEach var="item" items="${items }">
+						<c:set var="total" value="${total+(item.price*item.quantity) }" />
+					</c:forEach>
+					<div class="col-lg-4 offset-lg-4">
+						<div class="proceed-checkout">
+							<ul>
+								<li class="cart-total">Total: $${total } <span></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- Shopping Cart Section End -->

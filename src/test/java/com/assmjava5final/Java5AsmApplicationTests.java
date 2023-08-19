@@ -1,0 +1,13 @@
+package com.assmjava5final;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class Java5AsmApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}

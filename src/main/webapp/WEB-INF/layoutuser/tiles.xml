@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+ "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+ "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+ <definition name="layoutuser" template="/WEB-INF/layoutuser/index.jsp">
+ <put-attribute name="header" value="/WEB-INF/layoutuser/header.jsp" />
+ <put-attribute name="body" value="" />
+ <put-attribute name="footer" value="/WEB-INF/layoutuser/footer.jsp" />
+ </definition>
+ <definition name="user/*" extends="layoutuser">
+ <put-attribute name="body" value="/WEB-INF/views/user/{1}.jsp" />
+ </definition>
+
+
+<definition name="layoutadmin" template="/WEB-INF/layoutadmin/indexadmin.jsp">
+<put-attribute name="sidebaradmin" value="/WEB-INF/layoutadmin/sidebaradmin.jsp"/>
+ <put-attribute name="headeradmin" value="/WEB-INF/layoutadmin/headeradmin.jsp" />
+ <put-attribute name="bodyadmin" value="" />
+  <put-attribute name="footeradmin" value="/WEB-INF/layoutadmin/footeradmin.jsp" />
+ </definition>
+ <definition name="admin/*" extends="layoutadmin">
+ <put-attribute name="bodyadmin" value="/WEB-INF/views/admin/{1}.jsp" />
+ </definition>
+
+</tiles-definitions>
+
